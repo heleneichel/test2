@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
 		chart.chart = new Chart(chart, JSON.parse(chart.dataset.bssChart));
 	}
 
+	var products = document.querySelectorAll('[data-bss-dynamic-product]');
+
+	for (var product of products) {
+		var param = product.dataset.bssDynamicProductParam;
+		product.dataset.reflowProduct = new URL(location.href).searchParams.get(param)
+	}
+
+
 let collections = document.querySelectorAll('[data-bss-type="blog-loop"]');
 
 window.addEventListener("popstate", (e) => {
